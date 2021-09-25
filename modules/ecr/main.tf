@@ -1,4 +1,4 @@
-// ecr
+// ecr( リソースを1 つだけ作成するような場合は、this と付ける)
 resource "aws_ecr_repository" "this" {
   name = var.name
 
@@ -7,17 +7,18 @@ resource "aws_ecr_repository" "this" {
   }
 }
 
+# リソースを1 つだけ作成するような場合は、this と付ける
 resource "aws_ecr_lifecycle_policy" "this" {
   policy = jsonencode({
     "rules" : [{
-      "rulePriority" : 1,
-      "description" : "Hold only ${var.holding_count} images, expire all others",
-      "selection" : {
+      rulePriority : 1,
+      description : "Hold only ${var.holding_count} images, expire all others",
+      selection : {
         "tagStatus" : "any",
         "countType" : "imageCountMoreThan",
         "countNumber" : var.holding_count
       },
-      "action" : {
+      action : {
         "type" : "expire"
       }
     }]
