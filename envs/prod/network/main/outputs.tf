@@ -10,3 +10,11 @@ output "subnet_public" {
   # 複数取れる
   value = aws_subnet.public
 }
+
+output "subnet_private" {
+  value = aws_subnet.private
+}
+
+output "vpc_this_id" {
+  value = aws_vpc.this.id
+}
