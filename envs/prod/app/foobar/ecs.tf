@@ -10,7 +10,7 @@ resource "aws_ecs_cluster" "this" {
     Name = "${local.name_prefix}-${local.service_name}"
   }
 }
-
+/* managed by https://github.com/shonansurvivors/laravel-fargate-app/ecspresso
 # タスク定義
 resource "aws_ecs_task_definition" "this" {
   # タスク定義の名前
@@ -163,3 +163,4 @@ resource "aws_ecs_service" "this" {
     Name = "${local.name_prefix}-${local.service_name}"
   }
 }
+*/
